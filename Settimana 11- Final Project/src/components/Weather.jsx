@@ -58,7 +58,7 @@ const Weather = () => {
     fetchData();
   }, [city]);
 
-  // Caricamento dello script Lordicon nel lifecycle useEffect
+  // Per caricare lo script Lordicon nel lifecycle useEffect
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://cdn.lordicon.com/lordicon.js';
@@ -66,12 +66,12 @@ const Weather = () => {
     document.body.appendChild(script);
 
     return () => {
-      // Rimuovi lo script quando il componente viene smontato per evitare potenziali perdite di memoria
+    
       document.body.removeChild(script);
     };
   }, []);
   const handleHomeClick = () => {
-    // Naviga alla home
+    // per far partire l'icona della home
     navigate('/');
   };
 
