@@ -83,6 +83,7 @@ const SearchBar = ({ onSearch }) => {
           placeholder="Inserisci una città"
           value={city}
           onChange={handleInputChange}
+          autocomplete="off" // per non avere il suggerimento da parte del browser
         />
         <button className=" search-btn" onClick={handleSearch}>
           Cerca
