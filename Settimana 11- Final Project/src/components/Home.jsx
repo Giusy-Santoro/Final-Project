@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 import Footer from '../components/Footer'; 
 
-// Utilizza direttamente l'URL dell'immagine
+
 const gifImageURL = 'https://cdn.dribbble.com/users/1897998/screenshots/4267737/media/224d46db9bb481945829ec26b034f34c.gif';
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
             <SearchBar onSearch={handleSearch} />
           </div>
           <div className="col-md-6 text-center">
-            {/* Usa direttamente l'URL nell'elemento img */}
+            
             <img src={gifImageURL} alt="GIF" className="img-fluid max-width-100 gif" />
           </div>
         </div>
