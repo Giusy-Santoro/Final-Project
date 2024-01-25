@@ -1,7 +1,6 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt } from '@fortawesome/free-solid-svg-icons';
-import homeIcon from '../assets/home-icon.gif';
 import bellIcon from '../assets/bell-icon.gif';
 
 const CustomNavbar = () => {
@@ -10,15 +9,12 @@ const CustomNavbar = () => {
       <Container>
         <Navbar.Brand href="#">
           <FontAwesomeIcon icon={faTachometerAlt} className="me-2" />
-         Weather
+          Weather
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            <Nav.Link href="#">
-              <img src={homeIcon} alt="Home Icon" width="20" height="20" className="d-inline-block align-text-top me-1" />
-            </Nav.Link>
             <Nav.Link href="#">
               <img src={bellIcon} alt="Bell Icon" width="20" height="20" className="d-inline-block align-text-top me-1" />
             </Nav.Link>

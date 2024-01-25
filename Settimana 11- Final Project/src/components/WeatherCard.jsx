@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTemperatureLow, faTint, faWind, faEye, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
-const getCurrentTime = () => {
-  const now = new Date();
-  const options = { hour: 'numeric', minute: 'numeric', hour12: false };
-  return new Intl.DateTimeFormat('it-IT', options).format(now);
-};
-
 const WeatherCard = ({ data }) => {
   if (!data) {
     return null;
   }
+
+  const getCurrentTime = () => {
+    const now = new Date();
+    const options = { hour: 'numeric', minute: 'numeric', hour12: false };
+    return new Intl.DateTimeFormat('it-IT', options).format(now);
+  };
 
   const {
     name,
@@ -46,56 +46,36 @@ const WeatherCard = ({ data }) => {
     return new Intl.DateTimeFormat('it-IT', options).format(date);
   };
 
-   return (
-    <div className="weather-card container mt-1">
-      <div className="row">
-
-        <div className="d-flex justify-content-center align-item-center">
-
-          <h5 className="mb-2">
-            <FontAwesomeIcon icon={faMapMarkerAlt} /> {`${name}, ${country}`}
-          </h5>
-
-          <p className="card-text mb-2">
-            <strong>{getFormattedDate(sunrise)}</strong>
-          </p>
-          
+  return (
+    <div className="weather-card">
+      <div className="weather-head">
+        <h2>{name}</h2>
+        <p>{getFormattedDate(sunrise)}</p>
+        <p>{getCurrentTime()}</p>
+      </div>
+      <div className="weather-condition">
+        <img src={weatherIcon} alt="Weather Icon" className='condition-icon'/>
+        <div className="temperature">{kelvinToCelsius(main.temp)}°C</div>
+      </div>
+      <div className="details ">
+        <div className="detail">
+          <FontAwesomeIcon icon={faWind} />
+          <span>{wind.speed} m/s</span>
         </div>
+        <div className="detail">
+          <FontAwesomeIcon icon={faTint} />
+          <span>{main.humidity}%</span>
         </div>
-
-        <div className="row">
-        <div className="col-md-12">
-        <p className="card-text">
-            <strong>{getCurrentTime()}</strong>
-          </p>
-          <div className="d-flex flex-column align-items-center">
-            {weatherIcon && <img src={weatherIcon} alt="Weather Icon" className="img-fluid" />}
-            <div className="d-flex justify-content-between gap-5 mt-5 weather-icons">
-              <p className="text-center">
-                <FontAwesomeIcon icon={faWind} size="lg" />
-                <br />
-                {` ${wind.speed} m/s`}
-              </p>
-              <p className="text-center">
-                <FontAwesomeIcon icon={faTint} size="lg" />
-                <br />
-                {` ${main.humidity}%`}
-              </p>
-              <p className="text-center">
-                <FontAwesomeIcon icon={faEye} size="lg" />
-                <br />
-                {` ${visibility} metri`}
-              </p>
-            </div>
-          </div>
+        <div className="detail">
+          <FontAwesomeIcon icon={faEye} />
+          <span>{visibility / 1000} km</span>
         </div>
-        </div>
-      
-      <img src="https://i.pinimg.com/originals/01/87/93/018793bb6fd3e5ac98f630a559adb464.gif" alt="Gif" className='weather-gif img-fluid' />
+      </div>
+      <div className="weather-gif">
+        <img src="https://i.pinimg.com/originals/01/87/93/018793bb6fd3e5ac98f630a559adb464.gif" className='gif' alt="GIF" />
+      </div>
     </div>
   );
 };
-
-
 
 export default WeatherCard;

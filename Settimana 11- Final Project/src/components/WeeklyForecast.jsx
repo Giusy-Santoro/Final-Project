@@ -39,11 +39,10 @@ const WeeklyForecast = (props) => {
   }, [props.data]);
 
   console.log('Stato delle previsioni giornaliere:', dailyData);
-
   return (
-    <div className='forecast-card'>
-      
-        {dailyData && (
+    <div className='forecast-card container'>
+      {dailyData && (
+        <div className='col'>
           <LineChart width={810} height={250} data={dailyData}>
             <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
             <XAxis dataKey="dt_txt" />
@@ -51,10 +50,11 @@ const WeeklyForecast = (props) => {
             <Tooltip />
             <Line type="monotone" dataKey="main.temp" name="Temperatura (°C)" stroke="#8884d8" dot={false} />
           </LineChart>
-        )}
-     
+        </div>
+      )}
     </div>
   );
 };
+
 
 export default WeeklyForecast;
